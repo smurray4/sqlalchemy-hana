@@ -626,6 +626,7 @@ class HANAPyHDBDialect(HANABaseDialect):
 
     def create_connect_args(self, url):
         kwargs = url.translate_connect_args(username="user")
+        kwargs.update(url.query)
 
         if kwargs.get("database"):
             raise NotImplementedError("no support for database parameter")
